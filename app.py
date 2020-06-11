@@ -33,6 +33,9 @@ class Table(db.Model):
 Players: lista de jugadores, nombre de slack, si se encuetra activo y las cargas asignadas en formato json
         cards: {"cards": [{"type": '', "number": '', "description": ""}]}
 
+
+COMMENT TEST 
+
 Table: tablero en juego. con los usuarios y las cartas jugadas por cada uno en formato json
         ingame: {"player": "nombre", "cards": ["castas jugadas"]}
 
