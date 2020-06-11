@@ -48,6 +48,7 @@ def index():
 def register():
    # Players()
     data = request.data
+    print(data)
     return data
 
 
