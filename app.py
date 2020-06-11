@@ -35,6 +35,7 @@ Players: lista de jugadores, nombre de slack, si se encuetra activo y las cargas
 
 
 COMMENT TEST 
+COMMENT TEST 2
 
 Table: tablero en juego. con los usuarios y las cartas jugadas por cada uno en formato json
         ingame: {"player": "nombre", "cards": ["castas jugadas"]}
