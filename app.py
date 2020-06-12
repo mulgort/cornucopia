@@ -51,18 +51,25 @@ def index():
 @ app.route('/register', methods=["POST"])
 def register():
    # Players()
-    data = request.json['players']
+    data = request.form['text'].split(' ')
     print(data)
     for user in data:
-        new_user = Players(user=user['name'], active=True)
+        new_user = Players(user=user, active=True)
         db.session.add(new_user)
         db.session.commit()
-    return 'guardado'
+    return 'guardados los jugadores {}'.format(data)
 
 
-@ app.route('/shuffle')
+@ app.route('/shuffle', methods=["POST"])
 def shuffle():
-    return 'working...'
+    players = Players.query.all()
+    all_players = []
+    for player in players:
+        all_players.append(player.user)
+    
+    #shuffle_cards()
+    return 'Se repartieron cartas para los siguientes jugadores: {}'.format(all_players)
+
 
 
 '''
@@ -75,6 +82,7 @@ Ademas guardar en TABLE los usuarios con las cartas que se le asignaron y marcar
 
 @ app.route('/play', methods=["POST"])
 def play():
+    print(request.form)
     user = request.form['user_name']
     card = request.form['text'].split(' ')
     print('el Usuario {} jugo la carta {} de {}'.format(
@@ -93,6 +101,14 @@ enviar notificacion a los administradores del juego de que jugador jugo que cart
 '''
 TO-DO
 - Al finalizar el juego Pasar a los jugadores como inactivos.
+
+- Notificarle a los demas jugadores que carta fue jugada.
+
+- Crear tabla de reclacion de jugadores in game.
+
+- Tabla y endpoint para qeu el Admin pueda guardar los ISSUES detectados?
+
+- Tabla con historial (bitacora) del juego.
 
 TO-DO Fase II
 - ver como vincular la sesion de juego con el id de TABLA del juego en curso. esto con la idea de que podrian estar 
