@@ -19,7 +19,7 @@ class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     suit = db.Column(db.String(30))
     number = db.Column(db.String(2))
-    description = db.Column(db.String(200))
+    description = db.Column(db.String(500))
     img = db.Column(db.String(100))
 
 
