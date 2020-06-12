@@ -65,10 +65,36 @@ def shuffle():
     return 'working...'
 
 
+'''
+TO-DO
+Teniendo en cuenta la cantidad de jugadores repartir las carts disponibles enviando en el response a cada usuarios la informacion
+de sus cartas asignadas y las imagenes correspondientes de cada una.
+Ademas guardar en TABLE los usuarios con las cartas que se le asignaron y marcarlas como disponibles para ser jugadas.
+'''
+
+
 @ app.route('/play', methods=["POST"])
 def play():
     toplay = request.data
     return toplay
+
+
+'''
+TO-DO
+Registrar en TABLE que jugador jugo que carta, marcarla como "jugada" (ya no disponible)
+devolver como response los datos de la carta que el usuario jugo.
+enviar notificacion a los administradores del juego de que jugador jugo que carta.
+'''
+
+
+'''
+TO-DO
+- Al finalizar el juego Pasar a los jugadores como inactivos.
+
+TO-DO Fase II
+- ver como vincular la sesion de juego con el id de TABLA del juego en curso. esto con la idea de que podrian estar 
+utilizando la api varios grupos a la vez. 
+'''
 
 
 if __name__ == "__main__":
