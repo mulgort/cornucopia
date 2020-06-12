@@ -54,7 +54,7 @@ def register():
     data = request.json['players']
     print(data)
     for user in data:
-        new_user = Players(user=user, active=True)
+        new_user = Players(user=user['name'], active=True)
         db.session.add(new_user)
         db.session.commit()
     return 'guardado'
@@ -75,8 +75,11 @@ Ademas guardar en TABLE los usuarios con las cartas que se le asignaron y marcar
 
 @ app.route('/play', methods=["POST"])
 def play():
-    toplay = request.data
-    return toplay
+    user = request.form['user_name']
+    card = request.form['text'].split(' ')
+    print('el Usuario {} jugo la carta {} de {}'.format(
+        user, card[1], card[0]))
+    return 'Jugaste el {} de {}'.format(card[1], card[0])
 
 
 '''
