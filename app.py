@@ -15,9 +15,9 @@ class Players(db.Model):
     cards = db.Column(db.String(200))
 
 
-class Cards(db.Model):
+class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(30))
+    suit = db.Column(db.String(30))
     number = db.Column(db.String(2))
     description = db.Column(db.String(200))
     img = db.Column(db.String(100))
@@ -33,13 +33,12 @@ class Table(db.Model):
 Players: lista de jugadores, nombre de slack, si se encuetra activo y las cargas asignadas en formato json
         cards: {"cards": [{"type": '', "number": '', "description": ""}]}
 
-
-COMMENT TEST 
-COMMENT TEST 2
-COMMENT TEST 3
-
 Table: tablero en juego. con los usuarios y las cartas jugadas por cada uno en formato json
         ingame: {"player": "nombre", "cards": ["castas jugadas"]}
+
+
+Request register: data:
+        {"players": ["@derlok","@mulgort","@gaston"]}
 
 """
 
@@ -52,9 +51,13 @@ def index():
 @ app.route('/register', methods=["POST"])
 def register():
    # Players()
-    data = request.data
+    data = request.json['players']
     print(data)
-    return data
+    for user in data:
+        new_user = Players(user=user, active=True)
+        db.session.add(new_user)
+        db.session.commit()
+    return 'guardado'
 
 
 @ app.route('/shuffle')
