@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS Table (
     ingame text
 );
 -- INSERT CARDS
+-- All 13 cards from 5 suits and 2 jokers
 INSERT INTO Deck values('1','Data','A','You have invented a new attack against Data Validation and Encoding:: Read more about this topic in OWASP’s free Cheat Sheets on Input Validation, XSS Prevention, DOM-based XSS Prevention, SQL Injection Prevention, and Query Parameterization','imgs/DATA_A.png');
 INSERT INTO Deck values('2','Data','2','Brian can gather information about the underlying configurations, schemas, logic, code, software, services and infrastructure due to the content of error messages, or poor configuration, or the presence of default installation files or old, test, backup or copies of resources, or exposure of source code','imgs/DATA_2.png');
 INSERT INTO Deck values('3','Data','3','Robert can input malicious data because the allowed protocol format is not being checked, or duplicates are accepted, or the structure is not being verified, or the individual data elements are not being validated for format, type, range, length and a whitelist of allowed characters or formats','imgs/DATA_3.png');
