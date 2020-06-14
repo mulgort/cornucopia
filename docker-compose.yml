@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cornucopia:
+    build: .
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./database:/app/database
+      - ./imgs:/app/imgs
